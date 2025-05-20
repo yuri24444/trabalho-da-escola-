@@ -1,186 +1,232 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tudo Sobre Animais - Sua Empresa</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
-      margin: 0;
-      padding: 0;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carvão Caseiro</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      background-color: #008080;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      animation: slideDown 1s ease-in-out;
-    }
+        /* Corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            font-size: 3em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-    section {
-      padding: 20px;
-    }
+        /* Efeitos de parallax */
+        .parallax {
+            background: url('https://via.placeholder.com/1600x900') no-repeat center center fixed;
+            background-size: cover;
+            height: 400px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            font-size: 2.5em;
+            animation: fadeIn 3s ease-in-out;
+        }
 
-    .animal {
-      margin-bottom: 30px;
-      background-color: #e0f7fa;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      animation: fadeInUp 1s forwards;
-    }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .parallax h1 {
+            animation: slideIn 2s ease-out;
+        }
 
-    img {
-      width: 250px;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
+        @keyframes slideIn {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(0); }
+        }
 
-    img:hover {
-      transform: scale(1.1);
-    }
+        /* Conteúdo principal */
+        .content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px;
+        }
 
-    .preco {
-      font-weight: bold;
-      color: green;
-    }
+        .section {
+            width: 45%;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .categoria {
-      background-color: #e0f7fa;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
 
-    footer {
-      text-align: center;
-      background-color: #008080;
-      color: white;
-      padding: 10px;
-      animation: slideUp 1s ease-in-out;
-    }
+        .section img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
 
-    @keyframes slideUp {
-      from {
-        transform: translateY(100%);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
+        .section img:hover {
+            transform: scale(1.05);
+        }
 
-    .empresa-info {
-      text-align: center;
-      margin-top: 50px;
-    }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
 
-    .empresa-info h2 {
-      color: #008080;
-    }
+        .text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #666;
+        }
 
-    .empresa-info p {
-      font-size: 1.2em;
-      line-height: 1.6;
-    }
+        /* Botões */
+        .button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-    .contact {
-      background-color: #f0f8ff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 40px;
-    }
+        .button:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
 
-    .contact a {
-      color: #008080;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        /* Características */
+        .features {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1.1em;
+            color: #444;
+        }
 
-    .location {
-      margin-top: 40px;
-      text-align: center;
-    }
+        .features li {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
 
-    iframe {
-      border: 0;
-      width: 100%;
-      height: 400px;
-      border-radius: 10px;
-    }
-  </style>
+        .features li:before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #6dbf2f;
+            font-size: 1.5em;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                width: 90%;
+            }
+
+            header {
+                font-size: 2em;
+                padding: 20px 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <h1>Tudo Sobre Animais - Sua Empresa</h1>
-  <p>Somos uma empresa especializada em fornecer produtos e serviços relacionados aos animais.</p>
+    Como Fazer Carvão Caseiro
 </header>
 
-<section>
-  <h2>🥩 Animais para Consumo</h2>
+<!-- Seção Parallax -->
+<div class="parallax">
+    <h1>Descubra como fazer carvão caseiro de forma simples e sustentável!</h1>
+</div>
 
-  <div class="animal">
-    <h3>Frango</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/White_Leghorn_hen.jpg" alt="Frango">
-    <p><strong>Características:</strong> Criado principalmente para produção de carne e ovos. Bastante comum em pequenas propriedades rurais.</p>
-    <p class="preco">Preço médio da carne: R$ 8 - R$ 15/kg</p>
-  </div>
+<!-- Conteúdo Principal -->
+<div class="content">
+    <!-- Passos -->
+    <div class="section">
+        <h2>Passos para Produzir Carvão Caseiro</h2>
+        <img src="https://via.placeholder.com/500x300" alt="Imagem de pessoas fazendo carvão">
+        <div class="text">
+            O processo de fabricação de carvão caseiro envolve a queima controlada de madeira, conhecido como pirólise. Primeiro, escolha uma madeira densa, como eucalipto ou pinho. A madeira é cortada em pedaços e colocada em um forno ou fornalha. Durante o processo, é importante controlar a temperatura e a quantidade de oxigênio para garantir que a madeira se transforme em carvão de qualidade.
+        </div>
+        <button class="button">Saiba mais</button>
+    </div>
 
-  <div class="animal">
-    <h3>Porco</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Pig_in_Thailand.jpg" alt="Porco">
-    <p><strong>Características:</strong> Criado para produção de carne (carne suína). Animais de fácil adaptação e crescimento rápido.</p>
-    <p class="preco">Preço médio da carne: R$ 20 - R$ 35/kg</p>
-  </div>
+    <!-- Benefícios -->
+    <div class="section">
+        <h2>Benefícios do Carvão Caseiro</h2>
+        <img src="https://via.placeholder.com/500x300" alt="Imagem de pessoas usando carvão caseiro">
+        <div class="text">
+            Além de ser uma alternativa sustentável, o carvão caseiro pode ser produzido de forma econômica. Ele é muito utilizado para churrascos, fogueiras e até para fins industriais. Produzir o próprio carvão reduz a dependência de fontes comerciais e pode ser uma atividade prazerosa.
+        </div>
+        <button class="button">Veja os benefícios</button>
+    </div>
+</div>
 
-  <div class="animal">
-    <h3>Vaca</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Cow_in_Field.jpg" alt="Vaca">
-    <p><strong>Características:</strong> Criada principalmente para produção de leite e carne bovina. É um dos principais animais de consumo no mundo.</p>
-    <p class="preco">Preço médio da carne: R$ 35 - R$ 50/kg</p>
-  </div>
+<!-- Características -->
+<div class="section">
+    <h2>Características do Carvão Caseiro</h2>
+    <ul class="features">
+        <li>Alta Durabilidade: O carvão caseiro é conhecido por sua longa duração quando queimado, permitindo um fogo constante e eficaz.</li>
+        <li>Menos Fumaça: Em comparação com carvão industrial, o carvão caseiro emite muito menos fumaça, tornando-o ideal para churrascos e outras atividades ao ar livre.</li>
+        <li>Maior Temperatura: A queima do carvão caseiro gera uma temperatura mais alta, o que pode acelerar o processo de cozimento ou aquecimento.</li>
+        <li>Produto Sustentável: Produzir carvão em casa é uma prática ecológica, pois reutiliza materiais orgânicos como madeira de poda e restos de madeira.</li>
+        <li>Mais Econômico: Com o tempo, fazer seu próprio carvão pode reduzir significativamente os custos com combustível para churrascos e outras atividades.</li>
+        <li>Controle de Qualidade: Ao fazer o carvão caseiro, você pode controlar o processo e garantir que ele tenha a qualidade desejada, sem aditivos químicos ou tratamentos artificiais.</li>
+    </ul>
+</div>
 
-  <div class="animal">
-    <h3>Cordeiro</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Newborn_lamb.jpg" alt="Cordeiro">
-    <p><strong>Características:</strong> Carne muito apreciada em várias culturas. Criado especialmente para produção de carne de cordeiro.</p>
-    <p class="preco">Preço médio da carne: R$ 50 - R$ 70/kg</p>
-  </div>
+<!-- Footer -->
+<footer>
+    &copy; 2025 Carvão Caseiro - Todos os direitos reservados
+</footer>
 
-  <div class="animal">
-    <
+</body>
+</html>
+
